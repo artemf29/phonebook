@@ -12,11 +12,7 @@ public class PersonBuilder extends ContactBuilder {
     }
 
     public Contact create() {
-        Person person = new Person();
-        person.setName(name);
-        person.setPhoneNumber(phoneNumber);
-        person.setCreateDate(localDate);
-        person.setGender(gender);
+        Person person = new Person(name,phoneNumber,gender);
         return person;
     }
 }

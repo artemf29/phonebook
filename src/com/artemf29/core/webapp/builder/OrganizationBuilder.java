@@ -12,11 +12,7 @@ public class OrganizationBuilder extends ContactBuilder {
 
     @Override
     public Contact create() {
-        Organization organization = new Organization();
-        organization.setName(name);
-        organization.setPhoneNumber(phoneNumber);
-        organization.setCreateDate(localDate);
-        organization.setInfo(info);
+        Organization organization = new Organization(name,phoneNumber,info);
         return organization;
     }
 }

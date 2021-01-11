@@ -2,12 +2,22 @@ package com.artemf29.core.webapp.contacts;
 
 import com.artemf29.core.webapp.contacts.object.PhoneNumber;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Contact {
     protected String name;
-    private PhoneNumber phoneNumber;
-    private LocalDate createDate;
+    protected PhoneNumber phoneNumber;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM y'г.' \n (HH'ч.'mm'мин.')");
+    private final String createDate;
+    protected String updateDate;
+
+    public Contact(String name, PhoneNumber phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.createDate = LocalDateTime.now().format(DATE_TIME_FORMATTER);
+        this.updateDate = createDate;
+    }
 
     public String getName() {
         return name;
@@ -25,13 +35,15 @@ public abstract class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDate createDate) {
-        this.createDate = createDate;
+    public String getUpdateDate() {
+        return updateDate;
     }
 
-
+    protected void setUpdateDate() {
+        updateDate = LocalDateTime.now().format(DATE_TIME_FORMATTER);
+    }
 }
