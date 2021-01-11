@@ -5,7 +5,6 @@ import com.artemf29.core.webapp.contacts.object.PhoneNumber;
 abstract class ContactBuilder implements Builder {
     protected String name;
     protected PhoneNumber phoneNumber;
-    protected String updateDate;
 
     @Override
     public void setName(String name) {

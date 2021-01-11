@@ -1,5 +1,6 @@
 package com.artemf29.core.webapp.contacts.object;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class PhoneNumber {
@@ -25,5 +26,18 @@ public class PhoneNumber {
 
     public void setNumber(String number) {
         this.number = checkNumber(number);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhoneNumber that = (PhoneNumber) o;
+        return number.equals(that.number) && Objects.equals(pattern, that.pattern);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, pattern);
     }
 }
