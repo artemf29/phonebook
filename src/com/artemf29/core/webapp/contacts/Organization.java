@@ -9,7 +9,7 @@ public class Organization extends Contact {
 
     public Organization(String name, PhoneNumber phoneNumber, String info) {
         super(name, phoneNumber);
-        this.info = info;
+        setInfo(info);
     }
 
     public String getInfo() {
@@ -17,7 +17,7 @@ public class Organization extends Contact {
     }
 
     public void setInfo(String info) {
-        this.info = info;
+        this.info = info == null ? "not found" : info;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Organization extends Contact {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Organization that = (Organization) o;
-        return info.equals(that.info);
+        return Objects.equals(info, that.info);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class PhoneNumber {
         if (pattern.matcher(number).matches()) {
             return number;
         } else
-            return "missing";
+            return "******";
     }
 
     public String getNumber() {

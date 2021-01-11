@@ -16,6 +16,8 @@ public abstract class Contact implements Comparable<Contact> {
     protected String updateDate;
 
     public Contact(String name, PhoneNumber phoneNumber) {
+        Objects.requireNonNull(name, "name must not be null");
+        Objects.requireNonNull(phoneNumber, "phone number must not be null");
         this.uuid = UUID.randomUUID().toString();
         this.name = name;
         this.phoneNumber = phoneNumber;

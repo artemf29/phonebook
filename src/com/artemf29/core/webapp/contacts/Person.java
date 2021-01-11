@@ -18,6 +18,7 @@ public class Person extends Contact {
     }
 
     public void setGender(Gender gender) {
+        Objects.requireNonNull(gender, "gender must not be null");
         this.gender = gender;
     }
 
