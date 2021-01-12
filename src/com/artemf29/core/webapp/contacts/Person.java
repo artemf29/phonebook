@@ -35,4 +35,13 @@ public class Person extends Contact {
     public int hashCode() {
         return Objects.hash(super.hashCode(), gender);
     }
+
+    @Override
+    public String toString() {
+        return "Имя: " + name + '\n' +
+                "Номер: " + phoneNumber.toString() + '\n' +
+                "Пол: " + gender.getGender() + '\n' +
+                "Дата создания: " + createDate + '\n' +
+                "Дата изменения: " + updateDate;
+    }
 }

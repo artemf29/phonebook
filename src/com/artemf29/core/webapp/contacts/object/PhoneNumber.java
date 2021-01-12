@@ -17,7 +17,7 @@ public class PhoneNumber {
         if (pattern.matcher(number).matches()) {
             return number;
         } else
-            return "******";
+            return "not found";
     }
 
     public String getNumber() {
@@ -39,5 +39,10 @@ public class PhoneNumber {
     @Override
     public int hashCode() {
         return Objects.hash(number, pattern);
+    }
+
+    @Override
+    public String toString() {
+        return number;
     }
 }

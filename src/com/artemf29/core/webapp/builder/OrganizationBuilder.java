@@ -6,7 +6,7 @@ import com.artemf29.core.webapp.contacts.Organization;
 public class OrganizationBuilder extends ContactBuilder {
     private String info;
 
-    void setInfo(String info) {
+    public void setInfo(String info) {
         this.info = info;
     }
 

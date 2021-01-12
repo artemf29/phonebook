@@ -33,5 +33,14 @@ public class Organization extends Contact {
     public int hashCode() {
         return Objects.hash(super.hashCode(), info);
     }
+
+    @Override
+    public String toString() {
+        return "Название организации: " + name + '\n' +
+                "Номер: " + phoneNumber.toString() + '\n' +
+                "Информация: " + info + '\n' +
+                "Дата создания: " + createDate + '\n' +
+                "Дата изменения: " + updateDate;
+    }
 }
 

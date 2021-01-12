@@ -7,7 +7,7 @@ import com.artemf29.core.webapp.contacts.object.Gender;
 public class PersonBuilder extends ContactBuilder {
     private Gender gender;
 
-    void setGender(Gender gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

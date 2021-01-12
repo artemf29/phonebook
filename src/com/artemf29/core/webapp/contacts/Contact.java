@@ -11,8 +11,8 @@ public abstract class Contact implements Comparable<Contact> {
     private final String uuid;
     protected String name;
     protected PhoneNumber phoneNumber;
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM y'г.' \n (HH'ч.'mm'мин.')");
-    private final String createDate;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM y'г.'(HH'ч.'mm'мин.')");
+    protected final String createDate;
     protected String updateDate;
 
     public Contact(String name, PhoneNumber phoneNumber) {
