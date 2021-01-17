@@ -2,31 +2,37 @@ package com.artemf29.core.webapp;
 
 import com.artemf29.core.webapp.builder.OrganizationBuilder;
 import com.artemf29.core.webapp.builder.PersonBuilder;
-import com.artemf29.core.webapp.contacts.Contact;
 import com.artemf29.core.webapp.contacts.object.Gender;
 import com.artemf29.core.webapp.contacts.object.PhoneNumber;
+import com.artemf29.core.webapp.storage.SqlStorage;
 
 public class Main {
 
     public static void main(String[] args) {
+        SqlStorage storage = new SqlStorage(
+                "jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
 
-        OrganizationBuilder organizationBuilder = new OrganizationBuilder();
         PersonBuilder personBuilder = new PersonBuilder();
+        OrganizationBuilder organizationBuilder = new OrganizationBuilder();
 
-        organizationBuilder.setName("SPS");
-        organizationBuilder.setNumber(new PhoneNumber("79692017447"));
-        organizationBuilder.setInfo("Organization");
+        for (int i = 0; i < 100; i++) {
+            personBuilder.setName("Name " + i);
+            personBuilder.setNumber(new PhoneNumber("+78975" + i * 1230));
+            personBuilder.setGender(i % 2 == 0 ? Gender.MALE : Gender.FEMALE);
+            personBuilder.setCreateDate();
+            personBuilder.setUpdateDate();
 
-        Contact organization = organizationBuilder.create();
+            storage.create(personBuilder.create());
 
-        personBuilder.setName("Artem");
-        personBuilder.setNumber(new PhoneNumber("791173+-*"));
-        personBuilder.setGender(Gender.MALE);
+            organizationBuilder.setName("Organization" + i);
+            organizationBuilder.setNumber(new PhoneNumber("+7991254" + i * 1000));
+            organizationBuilder.setInfo("Info № " + i);
+            organizationBuilder.setCreateDate();
+            organizationBuilder.setUpdateDate();
 
-        Contact person = personBuilder.create();
+            storage.create(organizationBuilder.create());
+        }
 
-        System.out.println(person.toString());
-        System.out.println();
-        System.out.println(organization.toString());
+
     }
 }
