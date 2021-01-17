@@ -6,20 +6,20 @@ import com.artemf29.core.webapp.contacts.object.PhoneNumber;
 import java.util.Objects;
 
 public class Person extends Contact {
-    private Gender gender;
+    private final Gender gender;
 
-    public Person(String name, PhoneNumber phoneNumber, Gender gender) {
-        super(name, phoneNumber);
+    public Person(String name, PhoneNumber phoneNumber,String createDate,String updateDate, Gender gender) {
+        super(name, phoneNumber, createDate, updateDate);
+        this.gender = gender;
+    }
+
+    public Person(String uuid, String name, PhoneNumber phoneNumber, String createDate,String updateDate, Gender gender) {
+        super(uuid, name, phoneNumber,createDate,updateDate);
         this.gender = gender;
     }
 
     public Gender getGender() {
         return gender;
-    }
-
-    public void setGender(Gender gender) {
-        Objects.requireNonNull(gender, "gender must not be null");
-        this.gender = gender;
     }
 
     @Override

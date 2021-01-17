@@ -5,19 +5,20 @@ import com.artemf29.core.webapp.contacts.object.PhoneNumber;
 import java.util.Objects;
 
 public class Organization extends Contact {
-    private String info;
+    private final String info;
 
-    public Organization(String name, PhoneNumber phoneNumber, String info) {
-        super(name, phoneNumber);
-        setInfo(info);
+    public Organization(String name, PhoneNumber phoneNumber,String createDate,String updateDate, String info) {
+        super(name, phoneNumber,createDate,updateDate);
+        this.info = info;
+    }
+
+    public Organization(String uuid, String name, PhoneNumber phoneNumber,String createDate,String updateDate, String info) {
+        super(uuid, name, phoneNumber,createDate,updateDate);
+        this.info = info;
     }
 
     public String getInfo() {
         return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info == null ? "not found" : info;
     }
 
     @Override
@@ -26,7 +27,7 @@ public class Organization extends Contact {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Organization that = (Organization) o;
-        return Objects.equals(info, that.info);
+        return info.equals(that.info);
     }
 
     @Override

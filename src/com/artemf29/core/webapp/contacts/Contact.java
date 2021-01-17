@@ -1,9 +1,6 @@
 package com.artemf29.core.webapp.contacts;
 
 import com.artemf29.core.webapp.contacts.object.PhoneNumber;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,18 +8,22 @@ public abstract class Contact implements Comparable<Contact> {
     private final String uuid;
     protected String name;
     protected PhoneNumber phoneNumber;
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM y'г.'(HH'ч.'mm'мин.')");
     protected final String createDate;
     protected String updateDate;
 
-    public Contact(String name, PhoneNumber phoneNumber) {
+    public Contact(String name, PhoneNumber phoneNumber, String createDate, String updateDate) {
+        this(UUID.randomUUID().toString(), name, phoneNumber, createDate, updateDate);
+    }
+
+    public Contact(String uuid, String name, PhoneNumber phoneNumber, String createDate, String updateDate) {
+        Objects.requireNonNull(uuid, "uuid must not be null");
         Objects.requireNonNull(name, "name must not be null");
         Objects.requireNonNull(phoneNumber, "phone number must not be null");
-        this.uuid = UUID.randomUUID().toString();
+        this.uuid = uuid;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.createDate = LocalDateTime.now().format(DATE_TIME_FORMATTER);
-        this.updateDate = createDate;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
     }
 
     public String getUuid() {
@@ -33,16 +34,8 @@ public abstract class Contact implements Comparable<Contact> {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public PhoneNumber getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getCreateDate() {
@@ -51,10 +44,6 @@ public abstract class Contact implements Comparable<Contact> {
 
     public String getUpdateDate() {
         return updateDate;
-    }
-
-    public void setUpdateDate() {
-        updateDate = LocalDateTime.now().format(DATE_TIME_FORMATTER);
     }
 
     @Override
