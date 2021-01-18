@@ -11,6 +11,10 @@ import com.artemf29.core.webapp.contacts.object.PhoneNumber;
 import com.artemf29.core.webapp.sql.SqlHelper;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SqlStorage implements ContactStorage {
     private final SqlHelper sqlHelper;
@@ -56,6 +60,23 @@ public class SqlStorage implements ContactStorage {
                 numberType = resultSet.getInt("type_contact_id");
             }
             return numberType == 1 ? getPerson(connection, uuid) : getOrganization(connection, uuid);
+        });
+    }
+
+    @Override
+    public List<Contact> getAll() {
+        return sqlHelper.transactionalExecute(connection -> {
+            List<Contact> contacts = new ArrayList<>();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select * from  contact_info")) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String uuid = resultSet.getString("contact_uuid");
+                    int numberType = resultSet.getInt("type_contact_id");
+                    contacts.add(numberType == 1 ? getPerson(connection, uuid) : getOrganization(connection, uuid));
+                }
+            }
+            return contacts;
         });
     }
 
