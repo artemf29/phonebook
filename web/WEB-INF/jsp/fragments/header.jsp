@@ -4,17 +4,17 @@
     <div>
         <a href="contact"><img src="img/phonebook.png" alt="phone book"></a>
         <br>
-        Контакты
+        <a href="contact" style="color: azure">Контакты</a>
     </div>
     <div>
-        <a href="contact"><img src="img/add.png" alt="add"></a>
+        <a href="contact?action=add"><img src="img/add.png" alt="add"></a>
         <br>
-        Добавить
+        <a href="contact?action=add" style="color: azure">Добавить</a>
     </div>
     <div>
-        <a href="contact"><img src="img/search.png" alt="search"></a>
+        <a href="contact?action=search"><img src="img/search.png" alt="search"></a>
         <br>
-        Поиск
+        <a href="contact?action=search" style="color: azure">Поиск</a>
     </div>
 
 </header>

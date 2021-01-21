@@ -10,8 +10,8 @@
 <jsp:include page="fragments/header.jsp"/>
 <section>
     <br>
-    <table border="1" cellpadding="8" cellspacing="0" style="margin: auto;color: #008b8b; text-transform: none"
-           bgcolor="#f0ffff">
+    <table border="1" cellpadding="8" cellspacing="0" style="margin: auto;color: #008b8b"
+           bgcolor="#ffe4c4">
         <tr>
             <th>Имя Контакта</th>
             <th>Номер</th>

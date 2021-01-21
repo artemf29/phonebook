@@ -7,8 +7,8 @@
 body {
     background: bisque;
     font-family: 'Lato', sans-serif;
-    text-transform: uppercase;
     letter-spacing: 1px;
+    color: #008b8b;
 }
 
 header {
@@ -16,6 +16,7 @@ header {
     padding: 1em 12%;
     background: #2c3e50;
     color: floralwhite;
+    text-transform: uppercase;
     width: 100%;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
