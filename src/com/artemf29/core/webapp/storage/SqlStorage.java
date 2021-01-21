@@ -239,4 +239,5 @@ public class SqlStorage implements ContactStorage {
         return contact instanceof Person ?
                 ((Person) contact).getGender().name() : ((Organization) contact).getInfo();
     }
+
 }

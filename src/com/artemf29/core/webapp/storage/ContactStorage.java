@@ -22,4 +22,5 @@ public interface ContactStorage {
 
     Contact find(String searchWord);
 
+
 }

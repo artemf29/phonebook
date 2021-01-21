@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class PhoneNumber implements Comparable<PhoneNumber>{
     private String number;
+
     private final Pattern PATTERN =
             //временный RegEx, взято из https://habr.com/ru/post/110731/
             Pattern.compile("^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$");

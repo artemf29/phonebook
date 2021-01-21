@@ -11,8 +11,8 @@ abstract public class ContactBuilder implements Builder {
     protected PhoneNumber phoneNumber;
     protected String uuid = "No";
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM y'г.'(HH'ч.'mm'мин.')");
-    protected String createDate;
-    protected String updateDate;
+    protected String createDate = LocalDateTime.now().format(DATE_TIME_FORMATTER);
+    protected String updateDate = LocalDateTime.now().format(DATE_TIME_FORMATTER);
 
     @Override
     public void setUuid(String uuid) {
