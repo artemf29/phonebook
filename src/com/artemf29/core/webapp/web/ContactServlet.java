@@ -43,6 +43,7 @@ public class ContactServlet extends HttpServlet {
                 contact = type.equals("P") ? personBuilder.createNull() : organizationBuilder.createNull();
         } else {
             contact = contactStorage.get(uuid);
+            type = "O";
         }
         if (contact instanceof Person || type.equals("P")) {
             String gender = request.getParameter("gender");
@@ -50,7 +51,7 @@ public class ContactServlet extends HttpServlet {
             personBuilder.setName(name);
             personBuilder.setNumber(new PhoneNumber(number));
             personBuilder.setGender(gender.equals("MALE") ? Gender.MALE : Gender.FEMALE);
-            personBuilder.setCreateDate();
+            personBuilder.setCreateDate(contact.getCreateDate());
             personBuilder.setUpdateDate();
             contact = personBuilder.create();
         } else {
@@ -59,7 +60,7 @@ public class ContactServlet extends HttpServlet {
             organizationBuilder.setName(name);
             organizationBuilder.setNumber(new PhoneNumber(number));
             organizationBuilder.setInfo(info);
-            organizationBuilder.setCreateDate();
+            organizationBuilder.setCreateDate(contact.getCreateDate());
             organizationBuilder.setUpdateDate();
             contact = organizationBuilder.create();
         }
